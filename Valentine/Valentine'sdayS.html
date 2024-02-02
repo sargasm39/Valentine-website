@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #C3B1E1; /* pastel purple background */
+            margin: 0;
+            padding: 0;
+        }
+
+         .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #A020F0;
+        }
+
+        h2 {
+           color: #DA70D6;
+        }
+
+        #cat-image {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        #message-container {
+            margin-top: 20px;
+            color: pink;
+        }
+
+        #yesButton, #no-button, #maybe-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 0 auto;
+        }
+
+        #try-again-button {
+          padding: 10px 20px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 10px;
+          display: block;
+          margin: 0 auto; /* Center the button */
+
+        }
+
+        #yesButton {
+            background-color: #B53389;
+            color: #fff;
+        }
+
+        #no-button, #no-button-disabled {
+            background-color: #B53389;
+            color: #fff;
+        }
+
+        #maybe-button {
+            background-color: #B53389;
+            color: #fff;
+        }
+
+        #try-again-button {
+          background-color: #B53389;
+          color: #fff;
+          display: none; /* Hide initially */
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="Mainprompt">
+            <img class="image" src="cat-with-flower.jpg"></img>
+            <h1 class="hh" id="name">Hey beautiful!</h1>
+            <h2 class="pp" id="question">Will you be my Valentine?</h2>
+            <p class="pp" id="word">*whispers* click yes pls </p>
+            <div class="buttons">
+                <button id="yesButton" onclick="showMessage('Yes')">Yes</button>
+                  <button id="no-button" onclick="showMessage('No')">No</button>
+                  <button id="maybe-button" onclick=" showMessage('Maybe')">Maybe</button>
+                  <button id="try-again-button" style="display:none;" onclick="resetPage()">Try Again</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+<body>
+    <script>
+    function showMessage(response) {
+if (response === "No") {
+const noButton = document.getElementById("no-button");
+const container = document.querySelector(".container");
+const maxWidth = window.innerWidth - noButton.offsetWidth;
+const maxHeight = window.innerHeight - noButton.offsetHeight;
+
+// Set button position to absolute
+noButton.style.position = "absolute";
+
+// Change image source to "gun.gif"
+document.getElementsByClassName("image")[0].src = "gun-cat.jpg";
+
+// Generate random coordinates within the visible container
+const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
+
+// Apply new coordinates to the button
+noButton.style.left = randomX + "px";
+noButton.style.top = randomY + "px";
+
+// Update text content and hide name message
+document.getElementById("question").textContent =
+  "The no button is just for visuals so fucking try again";
+document.getElementById("name").style.display = "none";
+
+
+
+// Optional: You can also add a timeout to reset the position after a few seconds
+
+}
+
+if (response === "Yes") {
+
+// Remove name message;no button
+document.getElementById("name").remove();
+document.getElementById("no-button").remove();
+document.getElementById("maybe-button").remove();
+document.getElementById("word").remove();
+
+// Update text content, show message, and change image source to "dance.gif"
+const yesMessage = document.getElementById("question");
+yesMessage.textContent = "See you on the 14th Sarsour😘😘";
+yesMessage.style.display = "block";
+yesMessage.style.fontStyle = "normal";
+document.getElementsByClassName("image")[0].src = "cat-dancing.gif";
+
+// Remove yesButton
+document.getElementById("yesButton").remove();
+
+
+
+}
+
+if (response === "Maybe") {
+    // Change image source to "raised eyebrow"
+    document.getElementsByClassName("image")[0].src = "cat-eyebrow.jpg";
+
+    // Remove name message;no-button
+    document.getElementById("name").remove();
+    document.getElementById("no-button").remove();
+    document.getElementById("yesButton").remove();
+    document.getElementById("maybe-button").remove();
+    document.getElementById("word").remove();
+
+    // Update text content, show message
+    document.getElementById("question").textContent =
+        "Caught you in 4K, fucker!";
+    document.getElementById("try-again-button").style.display = "block";
+}
+}
+
+function resetPage() {
+// Reload the page to reset everything
+location.reload();
+}
+</script>
+</body>
+</html>
